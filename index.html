@@ -4,239 +4,434 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Media Interaktif Informatika - Berpikir Komputasional</title>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
     <style>
         :root {
             --primary: #4361ee;
-            --secondary: #3f37c9;
+            --primary-dark: #3f37c9;
+            --secondary: #7209b7;
             --accent: #f72585;
-            --success: #4cc9f0;
-            --bg: #f8f9fa;
-            --text: #2b2d42;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --info: #4cc9f0;
+            --bg-dark: #0f172a;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
             --white: #ffffff;
-            --dark: #1e293b;
+            --glass-bg: rgba(255, 255, 255, 0.94);
+            --glass-border: rgba(255, 255, 255, 0.5);
+            --card-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.12);
         }
-        
+
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Nunito', sans-serif;
+            font-family: 'Plus Jakarta Sans', 'Nunito', sans-serif;
         }
 
         body {
-            background-color: var(--bg);
-            color: var(--text);
+            background: linear-gradient(-45deg, #0f172a, #1e1b4b, #311042, #0284c7);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: var(--text-main);
             line-height: 1.6;
+            min-height: 100vh;
+            padding: 15px;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         header {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
             color: var(--white);
-            padding: 25px 20px;
+            padding: 30px 20px;
             text-align: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-radius: 24px;
+            margin: 10px auto 20px auto;
+            max-width: 1050px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        header h1 {
+            font-size: 2.1rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        header p {
+            font-size: 1.05rem;
+            opacity: 0.95;
         }
 
         nav {
             display: flex;
             justify-content: center;
+            gap: 8px;
             flex-wrap: wrap;
-            background: var(--white);
-            padding: 10px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            background: rgba(255, 255, 255, 0.18);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            padding: 12px;
+            border-radius: 20px;
+            max-width: 1050px;
+            margin: 0 auto 25px auto;
+            border: 1px solid rgba(255, 255, 255, 0.25);
             position: sticky;
-            top: 0;
+            top: 10px;
             z-index: 100;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
         }
 
         nav button {
-            background: transparent;
+            background: rgba(255, 255, 255, 0.88);
             border: none;
-            padding: 10px 18px;
-            margin: 4px;
-            font-size: 15px;
+            padding: 10px 16px;
+            font-size: 14px;
             font-weight: 700;
-            color: var(--primary);
+            color: var(--primary-dark);
             cursor: pointer;
-            border-radius: 20px;
-            transition: 0.3s;
+            border-radius: 12px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
 
-        nav button:hover, nav button.active {
-            background: var(--primary);
+        nav button:hover {
+            background: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        nav button.active {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
             color: var(--white);
+            box-shadow: 0 4px 15px rgba(247, 37, 133, 0.4);
         }
 
         .container {
-            max-width: 1000px;
-            margin: 30px auto;
-            padding: 25px;
-            background: var(--white);
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            max-width: 1050px;
+            margin: 0 auto 40px auto;
+            padding: 35px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-radius: 24px;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
         }
 
         .section {
             display: none;
-            animation: fadeIn 0.4s ease-in-out;
+            animation: fadeIn 0.4s ease-out;
         }
 
         .section.active {
             display: block;
         }
 
-        h2 { color: var(--primary); margin-bottom: 15px; border-bottom: 3px solid var(--success); padding-bottom: 10px; }
-        h3 { color: var(--secondary); margin-top: 20px; margin-bottom: 10px; }
-        p { margin-bottom: 15px; font-size: 16px; }
-        
-        .card {
-            background: #f1f5f9;
-            padding: 20px;
-            border-radius: 10px;
+        h2 {
+            color: var(--primary-dark);
+            font-size: 1.6rem;
             margin-bottom: 20px;
-            border-left: 5px solid var(--accent);
+            border-bottom: 3px solid var(--info);
+            padding-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        /* Identity Bar */
-        .identity-box {
-            background: #eef2ff;
-            border: 2px dashed var(--primary);
-            border-radius: 12px;
-            padding: 15px;
-            margin-bottom: 25px;
+        h3 {
+            color: var(--secondary);
+            margin-top: 22px;
+            margin-bottom: 12px;
+            font-size: 1.25rem;
+        }
+
+        p, li {
+            font-size: 16px;
+            color: var(--text-main);
+        }
+
+        ul, ol {
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .card {
+            background: #ffffff;
+            padding: 22px;
+            border-radius: 16px;
+            margin-bottom: 22px;
+            border-left: 6px solid var(--accent);
+            box-shadow: var(--card-shadow);
+            border-top: 1px solid #f1f5f9;
+            border-right: 1px solid #f1f5f9;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .media-action-container {
             display: flex;
+            justify-content: center;
             gap: 15px;
+            flex-wrap: wrap;
+            margin: 30px 0 25px 0;
+            padding: 22px;
+            background: linear-gradient(135deg, rgba(67, 97, 238, 0.08), rgba(247, 37, 133, 0.08));
+            border-radius: 16px;
+            border: 1px dashed var(--primary);
+        }
+
+        .btn-media-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px 24px;
+            font-size: 15px;
+            font-weight: 700;
+            color: white !important;
+            text-decoration: none;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-video {
+            background: linear-gradient(135deg, #ff0000, #cc0000);
+        }
+
+        .btn-video:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 0, 0, 0.4);
+        }
+
+        .btn-materi {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+        }
+
+        .btn-materi:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(67, 97, 238, 0.4);
+        }
+
+        .identity-box {
+            background: linear-gradient(135deg, #f0f3ff, #e8eefe);
+            border: 2px dashed var(--primary);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 30px;
+            display: flex;
+            gap: 20px;
             flex-wrap: wrap;
         }
 
         .input-group {
             flex: 1;
-            min-width: 220px;
+            min-width: 240px;
         }
 
         .input-group label {
             display: block;
-            font-weight: bold;
-            margin-bottom: 5px;
-            color: var(--secondary);
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: var(--primary-dark);
+            font-size: 14px;
         }
 
         .input-group input {
             width: 100%;
-            padding: 10px;
-            border: 1px solid #cbd5e1;
-            border-radius: 6px;
+            padding: 12px 15px;
+            border: 2px solid #cbd5e1;
+            border-radius: 10px;
             font-size: 15px;
+            transition: 0.3s;
+            outline: none;
+            background: var(--white);
         }
 
-        /* Quiz Styles */
+        .input-group input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+        }
+
         .question-box {
             margin-bottom: 25px;
-            padding: 18px;
+            padding: 20px;
             border: 1px solid #e2e8f0;
-            border-radius: 10px;
-            background: #fafafa;
+            border-radius: 14px;
+            background: #ffffff;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
         }
         
         .options {
             display: flex;
             flex-direction: column;
             gap: 10px;
-            margin-top: 12px;
+            margin-top: 15px;
         }
 
         .options label {
-            background: var(--white);
-            padding: 10px 15px;
-            border-radius: 8px;
+            background: #f8fafc;
+            padding: 12px 18px;
+            border-radius: 10px;
             cursor: pointer;
             border: 2px solid #e2e8f0;
-            transition: 0.2s;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            font-weight: 600;
         }
 
-        .options label:hover { border-color: var(--primary); background: #f0f4ff; }
-        .options input[type="radio"] { margin-right: 10px; }
+        .options label:hover {
+            border-color: var(--primary);
+            background: #eef2ff;
+            transform: translateX(4px);
+        }
+
+        .options input[type="radio"] {
+            margin-right: 12px;
+            width: 18px;
+            height: 18px;
+            accent-color: var(--primary);
+        }
 
         .btn {
-            background: var(--accent);
+            background: linear-gradient(135deg, var(--accent), #d90429);
             color: var(--white);
             border: none;
-            padding: 12px 25px;
-            font-size: 16px;
-            font-weight: bold;
-            border-radius: 8px;
+            padding: 12px 28px;
+            font-size: 15px;
+            font-weight: 700;
+            border-radius: 12px;
             cursor: pointer;
-            transition: 0.3s;
+            transition: all 0.3s;
             display: inline-block;
             margin: 15px 5px 15px 0;
+            box-shadow: 0 4px 12px rgba(247, 37, 133, 0.3);
+            text-decoration: none;
         }
 
-        .btn:hover { background: #d90429; transform: translateY(-2px); }
-        .btn-success { background: #10b981; }
-        .btn-success:hover { background: #059669; }
-        .btn-secondary { background: #64748b; }
-        .btn-secondary:hover { background: #475569; }
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(247, 37, 133, 0.4);
+        }
 
-        /* Visualization Area */
+        .btn-success {
+            background: linear-gradient(135deg, #10b981, #059669);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+        }
+
+        .btn-success:hover {
+            box-shadow: 0 6px 18px rgba(16, 185, 129, 0.4);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, #64748b, #475569);
+            box-shadow: 0 4px 12px rgba(100, 116, 139, 0.3);
+        }
+
+        .btn-gform {
+            background: linear-gradient(135deg, #8b5cf6, #6d28d9);
+            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
+            font-size: 16px;
+            padding: 14px 30px;
+        }
+
+        .btn-padlet {
+            background: linear-gradient(135deg, #f97316, #c2410c);
+            box-shadow: 0 4px 15px rgba(249, 115, 22, 0.4);
+            font-size: 16px;
+            padding: 14px 30px;
+        }
+
         .vis-container {
             display: flex;
             gap: 20px;
             flex-wrap: wrap;
+            margin: 20px 0;
         }
+
         .vis-box {
             flex: 1;
             min-width: 300px;
-            background: #282c34;
-            color: #abb2bf;
-            padding: 20px;
-            border-radius: 10px;
-            font-family: monospace;
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 22px;
+            border-radius: 14px;
+            font-family: 'Courier New', Courier, monospace;
             white-space: pre-wrap;
-        }
-        .step-btn {
-            background: var(--success);
-            border: none;
-            padding: 10px 18px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            margin-top: 15px;
-            color: #0f172a;
+            box-shadow: inset 0 2px 8px rgba(0,0,0,0.5);
+            border: 1px solid #334155;
         }
 
-        /* Game Area Styles */
+        .step-btn {
+            background: linear-gradient(135deg, var(--info), #0284c7);
+            color: #ffffff;
+            border: none;
+            padding: 12px 22px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 700;
+            margin-top: 10px;
+            box-shadow: 0 4px 12px rgba(76, 201, 240, 0.3);
+            transition: all 0.3s;
+        }
+
+        .step-btn:hover {
+            transform: translateY(-2px);
+        }
+
         .game-wrapper {
             display: flex;
             flex-wrap: wrap;
             gap: 20px;
-            margin-top: 15px;
+            margin-top: 20px;
         }
 
         .game-board-container {
             flex: 1;
-            min-width: 280px;
+            min-width: 290px;
             display: flex;
             flex-direction: column;
             align-items: center;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 16px;
+            box-shadow: var(--card-shadow);
         }
 
         .grid-board {
             display: grid;
             grid-template-columns: repeat(5, 55px);
             grid-template-rows: repeat(5, 55px);
-            gap: 4px;
-            background: #334155;
-            padding: 6px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            gap: 6px;
+            background: #1e293b;
+            padding: 10px;
+            border-radius: 14px;
+            box-shadow: inset 0 2px 10px rgba(0,0,0,0.5);
         }
 
         .grid-cell {
             width: 55px;
             height: 55px;
             background: #f8fafc;
-            border-radius: 6px;
+            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -250,11 +445,11 @@
 
         .game-controls {
             flex: 1;
-            min-width: 280px;
-            background: #f8fafc;
-            padding: 15px;
-            border-radius: 10px;
-            border: 1px solid #e2e8f0;
+            min-width: 290px;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 16px;
+            box-shadow: var(--card-shadow);
         }
 
         .command-buttons {
@@ -265,55 +460,61 @@
         }
 
         .cmd-btn {
-            background: #3b82f6;
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
             color: white;
             border: none;
-            padding: 8px 12px;
-            border-radius: 6px;
-            font-weight: bold;
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-weight: 700;
             cursor: pointer;
-            font-size: 14px;
+            font-size: 13px;
+            transition: 0.2s;
+            box-shadow: 0 2px 6px rgba(59, 130, 246, 0.3);
         }
 
-        .cmd-btn:hover { background: #1d4ed8; }
+        .cmd-btn:hover {
+            transform: translateY(-2px);
+        }
 
         .command-queue {
-            background: #1e293b;
+            background: #0f172a;
             color: #4ade80;
-            padding: 12px;
-            border-radius: 8px;
-            min-height: 80px;
+            padding: 15px;
+            border-radius: 10px;
+            min-height: 90px;
             font-family: monospace;
             margin-bottom: 15px;
             word-wrap: break-word;
+            border: 1px solid #334155;
         }
 
-        textarea {
+        table {
             width: 100%;
-            height: 120px;
-            padding: 15px;
-            border: 2px solid #cbd5e1;
-            border-radius: 8px;
-            resize: vertical;
-            font-family: inherit;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
         }
 
-        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-        table, th, td { border: 1px solid #cbd5e1; }
-        th, td { padding: 12px; text-align: left; }
-        th { background-color: var(--primary); color: white; }
-
-        .sheets-config {
-            background: #fffbeb;
-            border: 1px solid #fef3c7;
-            padding: 15px;
-            border-radius: 8px;
-            margin: 20px 0;
-        }
+        table, th, td { border: 1px solid #e2e8f0; }
+        th, td { padding: 14px 16px; text-align: left; }
+        th { background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
+            from { opacity: 0; transform: translateY(12px); }
             to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 600px) {
+            header h1 { font-size: 1.5rem; }
+            .container { padding: 20px; }
+            .grid-board {
+                grid-template-columns: repeat(5, 45px);
+                grid-template-rows: repeat(5, 45px);
+            }
+            .grid-cell { width: 45px; height: 45px; font-size: 20px; }
         }
     </style>
 </head>
@@ -330,14 +531,13 @@
         <button class="tab-btn" onclick="openTab('game-ct')">🎮 Game Algoritma</button>
         <button class="tab-btn" onclick="openTab('kuis-awal')">📝 Asesmen Awal</button>
         <button class="tab-btn" onclick="openTab('kuis-proses')">⚙️ Asesmen Proses</button>
-        <button class="tab-btn" onclick="openTab('kuis-akhir')">🚀 Asesmen Akhir (HOTS)</button>
+        <button class="tab-btn" onclick="openTab('kuis-akhir')">🚀 Asesmen Akhir</button>
         <button class="tab-btn" onclick="openTab('refleksi')">💭 Refleksi</button>
         <button class="tab-btn" onclick="openTab('hasil')">🏆 Hasil Belajar</button>
     </nav>
 
     <div class="container">
 
-        <!-- IDENTITAS SISWA -->
         <div class="identity-box">
             <div class="input-group">
                 <label for="namaSiswa">👤 Nama Lengkap Siswa:</label>
@@ -349,7 +549,6 @@
             </div>
         </div>
         
-        <!-- SECTION 1: MATERI -->
         <div id="materi" class="section active">
             <h2>1. Pengenalan Materi</h2>
             
@@ -364,7 +563,6 @@
                 <li><strong>Logika Algoritma:</strong> Urutan langkah-langkah logis untuk menyelesaikan suatu masalah.</li>
                 <li><strong>Pseudocode:</strong> "Kode semu" atau bahasa yang mirip bahasa pemrograman, digunakan untuk merancang algoritma agar mudah dibaca manusia sebelum diketik di komputer.</li>
             </ul>
-            
 
             <h3>Pengetahuan Prosedural (4 Fondasi CT)</h3>
             <ol>
@@ -374,7 +572,17 @@
                 <li><strong>Algoritma:</strong> Menyusun langkah-langkah penyelesaian (Contoh: Resep masakan).</li>
             </ol>
 
-            <div class="card" style="border-left-color: var(--success); background: #e0fbfc;">
+            <!-- Tautan Video dan Materi Pembelajaran tepat di atas Nilai & Karakter -->
+            <div class="media-action-container">
+                <a href="https://drive.google.com/file/d/1-5xo4hw3vSXa0zHu62nJIp-z5CfOmVl5/view?usp=sharing" target="_blank" class="btn-media-link btn-video">
+                    🎥 Lihat Video Pembelajaran
+                </a>
+                <a href="https://heyzine.com/flip-book/3b7f07dc5b.html" target="_blank" class="btn-media-link btn-materi">
+                    📄 Lihat Materi Pembelajaran
+                </a>
+            </div>
+
+            <div class="card" style="border-left-color: var(--success); background: #f0fdf4;">
                 <h3>🌟 Nilai & Karakter (Profil Pelajar Pancasila)</h3>
                 <p>Melalui pembelajaran ini, kamu akan mengembangkan karakter:</p>
                 <ul>
@@ -385,32 +593,30 @@
             </div>
         </div>
 
-        <!-- SECTION 2: VISUALISASI -->
         <div id="visualisasi" class="section">
             <h2>2. Visualisasi Logika & Pseudocode</h2>
             <p>Mari kita lihat perbandingan antara Logika Berpikir sehari-hari dengan Pseudocode dalam kasus <strong>"Menentukan Angka Terbesar dari Dua Bilangan"</strong>.</p>
             
             <div class="vis-container">
-                <div class="vis-box" style="background: #fdf0d5; color: #333; border: 2px solid #e5e5e5;">
-                    <h3 style="margin-top:0;">Logika Manusia 🧠</h3>
+                <div class="vis-box" style="background: #ffffff; color: #1e293b; border: 2px solid #e2e8f0;">
+                    <h3 style="margin-top:0; color: var(--primary-dark);">Logika Manusia 🧠</h3>
                     <p id="logic-text">Klik tombol 'Langkah Selanjutnya' untuk melihat urutan berpikir.</p>
                 </div>
                 <div class="vis-box">
-                    <h3 style="margin-top:0; color: #61afef;">Pseudocode 💻</h3>
+                    <h3 style="margin-top:0; color: #38bdf8;">Pseudocode 💻</h3>
                     <div id="pseudo-text"></div>
                 </div>
             </div>
             <button class="step-btn" onclick="nextStep()">Langkah Selanjutnya ⏭️</button>
         </div>
 
-        <!-- SECTION 3: GAME CT -->
         <div id="game-ct" class="section">
             <h2>3. Game Labirin Robot Algoritma 🤖</h2>
             <p>Bantu Robot 🤖 mencapai Bintang ⭐️ dengan menyusun barisan perintah (algoritma) yang tepat! Hindari Rintangan 🪨.</p>
             
             <div class="game-wrapper">
                 <div class="game-board-container">
-                    <div style="margin-bottom: 10px; font-weight: bold;">
+                    <div style="margin-bottom: 15px; font-weight: bold; color: var(--primary-dark);">
                         Level: <span id="game-level-txt">1</span> / 3 | Skor Game: <span id="game-score-txt">0</span>
                     </div>
                     <div class="grid-board" id="gridBoard"></div>
@@ -436,7 +642,6 @@
             </div>
         </div>
 
-        <!-- SECTION 4: KUIS AWAL -->
         <div id="kuis-awal" class="section">
             <h2>4. Asesmen Awal (Diagnostik)</h2>
             <p>Jawablah 3 pertanyaan ini untuk mengukur pemahaman awalmu!</p>
@@ -444,7 +649,6 @@
             <button class="btn" onclick="submitQuiz('awal')">Simpan Jawaban Asesmen Awal</button>
         </div>
 
-        <!-- SECTION 5: KUIS PROSES -->
         <div id="kuis-proses" class="section">
             <h2>5. Asesmen Proses (Formatif)</h2>
             <p>Uji pemahamanmu dari materi yang sudah dipelajari dengan 5 soal berikut.</p>
@@ -452,31 +656,41 @@
             <button class="btn" onclick="submitQuiz('proses')">Simpan Jawaban Asesmen Proses</button>
         </div>
 
-        <!-- SECTION 6: KUIS AKHIR -->
         <div id="kuis-akhir" class="section">
-            <h2>6. Asesmen Akhir (Sumatif & HOTS/TKA)</h2>
-            <p>Ini adalah tantangan sesungguhnya! Terdapat 10 soal HOTS (Higher Order Thinking Skills) dan Tes Kemampuan Akademik (Logika).</p>
-            <div id="q-akhir-container"></div>
-            <button class="btn" onclick="submitQuiz('akhir')">Simpan Jawaban Asesmen Akhir</button>
+            <h2>6. Asesmen Akhir (Sumatif & HOTS)</h2>
+            <p>Ujian Sumatif dan Tes Kemampuan Akademik (HOTS) dilaksanakan melalui Google Form resmi.</p>
+            
+            <div class="card" style="text-align: center; padding: 40px; background: linear-gradient(135deg, #f5f3ff, #ede9fe); border-left-color: #8b5cf6;">
+                <h3 style="color: #6d28d9; margin-bottom: 15px;">📝 Kerjakan Asesmen Akhir di Google Form</h3>
+                <p style="margin-bottom: 25px; color: #4b5563;">Klik tombol di bawah ini untuk membuka lembar soal Asesmen Akhir (Google Form / Google Apps Script) pada tab baru.</p>
+                
+                <a href="https://script.google.com/macros/s/AKfycbxtoTX3kLwtJHCxDyWcmiuQ214dYAUbj7KLpQQ_1-hXy4SO3Jss4y3RbmrdMQxOCsLm/exec" target="_blank" class="btn btn-gform" onclick="markGoogleFormDone()">
+                    🚀 Buka Asesmen Akhir (Google Form)
+                </a>
+                <p id="gform-status" style="margin-top: 15px; font-weight: bold; color: #10b981;"></p>
+            </div>
         </div>
 
-        <!-- SECTION 7: REFLEKSI -->
         <div id="refleksi" class="section">
             <h2>7. Refleksi Pembelajaran</h2>
-            <p>Ceritakan apa yang kamu rasakan dan pelajari pada hari ini!</p>
-            <div class="card">
-                <label for="refleksiText"><strong>Menurutmu, mengapa berpikir komputasional itu penting untuk kehidupan sehari-hari? Bagian mana yang paling menarik bagi kamu?</strong></label><br><br>
-                <textarea id="refleksiText" placeholder="Tuliskan refleksimu di sini..."></textarea>
+            <p>Bagikan kesan, pesan, dan refleksi belajarmu hari ini bersama teman-teman melalui papan kolaborasi Padlet!</p>
+            
+            <div class="card" style="text-align: center; padding: 40px; background: linear-gradient(135deg, #fff7ed, #ffedd5); border-left-color: #f97316;">
+                <h3 style="color: #c2410c; margin-bottom: 15px;">💭 Papan Refleksi Padlet</h3>
+                <p style="margin-bottom: 25px; color: #4b5563;">Klik tombol di bawah ini untuk membuka papan refleksi Padlet dan menuliskan refleksimu.</p>
+                
+                <a href="https://padlet.com/smpn2satapjambon/releksi-pembelajaran-materi-algoritma-dan-pseudocode-r0xad0ii0t5yzb73" target="_blank" class="btn btn-padlet" onclick="markPadletDone()">
+                    ✨ Buka Padlet Refleksi
+                </a>
+                <p id="padlet-status" style="margin-top: 15px; font-weight: bold; color: #10b981;"></p>
             </div>
-            <button class="btn" onclick="simpanRefleksi()">Simpan Refleksi</button>
         </div>
 
-        <!-- SECTION 8: HASIL -->
         <div id="hasil" class="section">
             <h2>🏆 Dashboard Hasil Belajar</h2>
-            <p>Berikut adalah rekapitulasi hasil pengerjaan kuis, permainan, dan refleksi kamu.</p>
+            <p>Berikut adalah rekapitulasi hasil pengerjaan kuis, permainan, dan aktivitas kamu.</p>
 
-            <div class="card" style="background: #eff6ff; border-left-color: var(--primary);">
+            <div class="card" style="background: #eef2ff; border-left-color: var(--primary);">
                 <h4>Identitas Siswa:</h4>
                 <p style="margin: 0;"><strong>Nama:</strong> <span id="disp-nama">Belum diisi</span> | <strong>Kelas:</strong> <span id="disp-kelas">Belum diisi</span></p>
             </div>
@@ -495,36 +709,32 @@
                     <td id="skor-proses">Belum Dikerjakan</td>
                 </tr>
                 <tr>
-                    <td>Asesmen Akhir (HOTS)</td>
+                    <td>Asesmen Akhir (Google Form)</td>
                     <td id="skor-akhir">Belum Dikerjakan</td>
                 </tr>
                 <tr>
                     <td>Game Robot CT</td>
                     <td id="skor-game">0 / 100</td>
                 </tr>
+                <tr>
+                    <td>Refleksi (Padlet)</td>
+                    <td id="skor-refleksi">Belum Mengisi</td>
+                </tr>
             </table>
 
-            <h3 style="margin-top: 25px;">Catatan Refleksi:</h3>
-            <div class="card" style="background: #fff; border: 1px solid #ddd;">
-                <p id="hasil-refleksi"><em>Belum ada refleksi yang diisi.</em></p>
-            </div>
+            <hr style="margin: 25px 0; border: 0; border-top: 1px solid #e2e8f0;">
 
-            <hr style="margin: 25px 0;">
+            <h3>📤 Kirim Rekap Hasil</h3>
+            <p>Setelah semua tugas selesai, klik tombol di bawah untuk mengirim data rekap ke Spreadsheet Guru.</p>
 
-            <h3>📤 Kirim Hasil </h3>
-            <p>Setelah semua tugas, kuis, game, dan refleksi selesai, klik tombol di bawah. Hasil belajar akan dikirim ke Spreadsheet Guru.</p>
-
-           <!--div class="sheets-config"-->
-                <p style="margin-bottom: 10px;">
+            <div style="margin-top: 15px;">
                 <button class="btn btn-success" onclick="sendToGoogleSheet()">🚀 Kirim Hasil Sekarang</button>
                 <p id="send-status" style="font-weight: bold; margin-top: 10px;"></p>
             </div>
-
-            
+        </div>
 
     </div>
 
-    <!-- JAVASCRIPT LOGIC -->
     <script>
         // --- Navigation Logic ---
         function openTab(tabId) {
@@ -532,8 +742,13 @@
             document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
             
             document.getElementById(tabId).classList.add('active');
-            event.currentTarget.classList.add('active');
-            window.scrollTo(0, 0);
+            
+            const activeBtn = Array.from(document.querySelectorAll('.tab-btn')).find(
+                btn => btn.getAttribute('onclick') && btn.getAttribute('onclick').includes(tabId)
+            );
+            if(activeBtn) activeBtn.classList.add('active');
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function updateIdentitas() {
@@ -541,6 +756,18 @@
             const kelas = document.getElementById('kelasSiswa').value || "Belum diisi";
             document.getElementById('disp-nama').innerText = nama;
             document.getElementById('disp-kelas').innerText = kelas;
+        }
+
+        // --- Google Form & Padlet Handlers ---
+        function markGoogleFormDone() {
+            userScores.akhir = "Telah Dibuka / Dikerjakan di GForm";
+            document.getElementById('skor-akhir').innerText = "✅ Telah Mengakses Google Form";
+            document.getElementById('gform-status').innerText = "✅ Link Google Form / Apps Script telah dibuka di tab baru.";
+        }
+
+        function markPadletDone() {
+            document.getElementById('skor-refleksi').innerText = "✅ Telah Mengakses Padlet";
+            document.getElementById('padlet-status').innerText = "✅ Papan Padlet telah dibuka di tab baru.";
         }
 
         // --- Visualization Logic ---
@@ -589,7 +816,7 @@
                     [0, 1, 1, 0, 0],
                     [0, 0, 0, 0, 2]
                 ],
-                start: {x: 0, y: 0, dir: 1} // dir: 0:Up, 1:Right, 2:Down, 3:Left
+                start: {x: 0, y: 0, dir: 1}
             },
             {
                 board: [
@@ -619,8 +846,6 @@
         let isRunning = false;
         let gameScore = 0;
 
-        const dirIcons = ['⬆️', '➡️', '⬇️', '⬅️'];
-
         function initGameLevel(lvl) {
             const gridContainer = document.getElementById('gridBoard');
             gridContainer.innerHTML = '';
@@ -645,14 +870,12 @@
         }
 
         function renderRobot() {
-            // Clear previous robot position icon
             document.querySelectorAll('.grid-cell').forEach(c => {
                 if(c.innerText === '🤖' || c.innerText.match(/⬆️|➡️|⬇️|⬅️/)) {
                     c.innerText = '';
                 }
             });
 
-            // Re-render target
             const targetPos = levels[currentLevel].board;
             for(let r=0; r<5; r++){
                 for(let c=0; c<5; c++){
@@ -718,7 +941,6 @@
                     if (robotState.dir === 2) nextX++;
                     if (robotState.dir === 3) nextY--;
 
-                    // Boundary Check & Wall Check
                     if (nextX >= 0 && nextX < 5 && nextY >= 0 && nextY < 5) {
                         if (levels[currentLevel].board[nextX][nextY] !== 1) {
                             robotState.x = nextX;
@@ -737,23 +959,19 @@
                 renderRobot();
             }
 
-            // Check Win Condition
             if (levels[currentLevel].board[robotState.x][robotState.y] === 2) {
                 document.getElementById('game-status').innerText = "🎉 Berhasil! Robot mencapai Bintang!";
                 gameScore += 33;
-                if(currentLevel === 2) gameScore = 100; // max score
+                if(currentLevel === 2) gameScore = 100;
                 document.getElementById('game-score-txt').innerText = gameScore;
                 document.getElementById('skor-game').innerText = gameScore + " / 100";
 
                 setTimeout(() => {
                     if (currentLevel < levels.length - 1) {
                         currentLevel++;
-                        alert("Lanjut ke Level berikutnya!");
                         commandList = [];
                         updateQueueDisplay();
                         initGameLevel(currentLevel);
-                    } else {
-                        alert("Selamat! Kamu menyelesaikan semua level Game CT!");
                     }
                 }, 1000);
             } else {
@@ -762,7 +980,7 @@
             isRunning = false;
         }
 
-        // --- Quiz Data ---
+        // --- Quiz Data (Awal & Proses) ---
         const dbQuiz = {
             awal: [
                 { q: "Apa yang kamu ketahui tentang algoritma?", o: ["Urutan langkah logis", "Sebuah komputer", "Bahasa Inggris", "Hardware"], a: 0 },
@@ -775,22 +993,9 @@
                 { q: "Melihat awan gelap tebal dan menyimpulkan akan hujan adalah contoh...", o: ["Pengenalan Pola", "Dekomposisi", "Algoritma", "Abstraksi"], a: 0 },
                 { q: "Langkah-langkah sistematis untuk menyelesaikan masalah disebut...", o: ["Program", "Algoritma", "Pseudocode", "Variabel"], a: 1 },
                 { q: "Pada Pseudocode, perintah untuk menampilkan teks ke layar biasanya menggunakan kata...", o: ["INPUT", "READ", "PRINT/WRITE", "IF"], a: 2 }
-            ],
-            akhir: [
-                { q: "HOTS 1: Budi ingin membuat teh. Langkahnya: (1) Tuang air panas (2) Masukkan teh (3) Siapkan gelas (4) Masukkan gula (5) Aduk. Urutan algoritma yang paling logis adalah...", o: ["3-2-4-1-5", "1-2-3-4-5", "3-1-2-4-5", "5-4-3-2-1"], a: 0 },
-                { q: "HOTS 2: Jika lampu merah menyala, mobil berhenti. Jika hijau, jalan. Jika kuning, pelan-pelan. Dalam pseudocode ini menggunakan struktur...", o: ["Pengulangan (Looping)", "Pemilihan (IF-THEN-ELSE)", "Sekuensial berurutan", "Array"], a: 1 },
-                { q: "TKA 3: 2, 5, 8, 11, ... Angka selanjutnya dalam pola ini adalah...", o: ["12", "13", "14", "15"], a: 2 },
-                { q: "TKA 4: Semua programmer pandai logika. Budi adalah programmer. Kesimpulannya?", o: ["Budi belum tentu pandai logika", "Budi pandai matematika", "Budi pandai logika", "Semua yang pandai logika adalah Budi"], a: 2 },
-                { q: "HOTS 5: Dari kota A ke B butuh 10km, A ke C 15km, B ke C 5km. Rute terpendek A ke C adalah...", o: ["Lewat B (15km)", "Langsung ke C (15km)", "Keduanya sama (15km)", "Tidak bisa ditentukan"], a: 2 },
-                { q: "HOTS 6: Kamu diberi tugas mengurutkan 100 buku berdasarkan abjad. Memisahkan buku per huruf (A sendiri, B sendiri, dst) sebelum diurutkan merupakan penerapan CT tahap...", o: ["Algoritma", "Dekomposisi", "Abstraksi", "Debugging"], a: 1 },
-                { q: "HOTS 7: Peta kereta api (KRL) hanya menampilkan garis warna dan nama stasiun tanpa gambar rumah atau jalan raya. Ini contoh dari...", o: ["Abstraksi", "Dekomposisi", "Pengenalan Pola", "Algoritma"], a: 0 },
-                { q: "HOTS 8: Sebuah pseudocode berbunyi: <br>a = 5<br>b = 3<br>a = a + b<br>PRINT a. <br>Berapa outputnya?", o: ["3", "5", "8", "15"], a: 2 },
-                { q: "TKA 9: SAPI : RUMPUT = MOBIL : ...", o: ["BENSIN", "JALAN", "RODA", "KNALPOT"], a: 0 },
-                { q: "HOTS 10: Algoritma yang salah (bug) pada robot pembersih: 'Jika menabrak tembok, maju terus'. Akibatnya adalah...", o: ["Robot berbelok", "Robot membersihkan tembok", "Robot rusak/stuck", "Tugas selesai"], a: 2 }
             ]
         };
 
-        // --- Render Quizzes ---
         function renderQuiz(type, containerId) {
             const container = document.getElementById(containerId);
             let html = "";
@@ -809,7 +1014,6 @@
             container.innerHTML = html;
         }
 
-        // --- Submit Quiz Logic ---
         const userScores = { awal: null, proses: null, akhir: null };
 
         function submitQuiz(type) {
@@ -826,31 +1030,15 @@
                 }
             });
 
-            if (!allAnswered) {
-                alert("Harap jawab semua pertanyaan sebelum menyimpan!");
-                return;
-            }
+            if (!allAnswered) return;
 
             const finalScore = Math.round((score / total) * 100);
             userScores[type] = finalScore;
             
             document.getElementById(`skor-${type}`).innerHTML = `<strong>${finalScore}</strong> / 100 (${score} Benar dari ${total})`;
-            alert(`Kuis tersimpan! Nilai Anda: ${finalScore}`);
-        }
-
-        function simpanRefleksi() {
-            const text = document.getElementById('refleksiText').value;
-            if(text.trim() === "") {
-                alert("Mohon isi refleksi Anda terlebih dahulu.");
-                return;
-            }
-            document.getElementById('hasil-refleksi').innerText = text;
-            alert("Refleksi berhasil disimpan! Silakan cek tab Hasil Belajar.");
-            openTab('hasil');
         }
 
         // --- Google Sheets Integration ---
-        // GURU: Ganti URL di bawah ini dengan URL Web App Google Apps Script.
         const GOOGLE_SHEET_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxzMQ-B34Ssb0qnVPoMy5cOaVmTZ4req8MkD9rL2smsscNJskENpSZx65Klhu3gP0wznw/exec";
         let sudahMengirim = false;
 
@@ -860,20 +1048,8 @@
             const kelas = document.getElementById('kelasSiswa').value.trim();
             const statusEl = document.getElementById('send-status');
 
-            if (!nama || !kelas) {
-                alert("Mohon isi Nama Lengkap dan Kelas terlebih dahulu di bagian atas!");
-                return;
-            }
-
-            if (!webhookUrl || webhookUrl === "GANTI_DENGAN_URL_WEB_APP_GURU") {
-                alert("Guru belum memasukkan URL Web App Google Apps Script ke dalam kode HTML.");
-                return;
-            }
-
-            if (sudahMengirim) {
-                alert("Hasil belajar sudah pernah dikirim dari halaman ini.");
-                return;
-            }
+            if (!nama || !kelas) return;
+            if (sudahMengirim) return;
 
             const payload = {
                 waktuKirim: new Date().toISOString(),
@@ -883,7 +1059,7 @@
                 skorProses: userScores.proses !== null ? userScores.proses : "Belum Kuis",
                 skorAkhir: userScores.akhir !== null ? userScores.akhir : "Belum Kuis",
                 skorGame: gameScore,
-                refleksi: document.getElementById('refleksiText').value || "Belum Mengisi"
+                refleksi: document.getElementById('skor-refleksi').innerText
             };
 
             statusEl.innerText = "⏳ Mengirim data ke Spreadsheet...";
@@ -898,11 +1074,11 @@
                 });
 
                 sudahMengirim = true;
-                statusEl.innerText = "✅ Data telah dikirim. Silakan cek Spreadsheet Guru.";
+                statusEl.innerText = "✅ Data telah dikirim ke Spreadsheet Guru.";
                 statusEl.style.color = "#10b981";
             } catch (err) {
                 console.error(err);
-                statusEl.innerText = "❌ Gagal mengirim data. Periksa koneksi atau Web App Guru.";
+                statusEl.innerText = "❌ Gagal mengirim data. Periksa koneksi.";
                 statusEl.style.color = "#ef4444";
             }
         }
@@ -911,11 +1087,8 @@
         window.onload = function() {
             renderQuiz('awal', 'q-awal-container');
             renderQuiz('proses', 'q-proses-container');
-            renderQuiz('akhir', 'q-akhir-container');
             initGameLevel(0);
         };
-
     </script>
-    
 </body>
 </html>
